@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Scientific Calculator</a>
+    </div>
+  </header>
+
+  <main class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="calculator">
+          <input type="text" id="display" class="form-control mb-2" readonly>
+          <div class="row">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="clearDisplay()">C</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('/')">/</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('*')">*</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('(')">(</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter(')')">)</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('%')">%</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('^')">^</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('sqrt(')">√</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('sin(')">sin</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('cos(')">cos</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('tan(')">tan</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('log(')">log</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('7')">7</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('8')">8</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('9')">9</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('-')">-</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('4')">4</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('5')">5</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('6')">6</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('+')">+</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('1')">1</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('2')">2</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="appendCharacter('3')">3</button></div>
+            <div class="col-3"><button class="btn btn-secondary btn-block" onclick="calculateResult()">=</button></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-6"><button class="btn btn-secondary btn-block" onclick="appendCharacter('0')">0</button></div>
+            <div class="col-6"><button class="btn btn-secondary btn-block" onclick="appendCharacter('.')">.</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
