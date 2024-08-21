@@ -1,0 +1,33 @@
+/* calculator/public/style.css */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.calculator {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculator .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+}
+
+.calculator button {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.calculator .hidden {
+  display: none;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
