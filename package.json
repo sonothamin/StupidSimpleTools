@@ -1,0 +1,13 @@
+{
+    "name": "calculator-sst",
+    "version": "1.0.0",
+    "description": "A simple calculator app for StupidSimpleTools",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.17.3"
+    }
+  }
+  
