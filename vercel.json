@@ -2,9 +2,5 @@
   "version": 2,
   "builds": [
     { "src": "index.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/calculator/(.*)", "dest": "/calculator/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
