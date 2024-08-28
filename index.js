@@ -4,8 +4,21 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve metadata from /public/meta
+app.use('/public/meta', express.static(path.join(__dirname, 'public', 'meta')));
+
+// Serve tool scripts dynamically
+app.get('/tools/:toolName', (req, res) => {
+    const toolName = req.params.toolName;
+    const toolPath = path.join(__dirname, 'public', 'tools', `${toolName}.js`);
+    
+    fs.access(toolPath, fs.constants.F_OK, (err) => {
+        if (err) {
+            return res.status(404).send('Tool not found');
+        }
+        res.sendFile(toolPath);
+    });
+});
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -14,7 +27,6 @@ app.set('views', path.join(__dirname, 'views'));
 function getToolsList() {
     const metaDir = path.join(__dirname, 'public', 'meta');
     const files = fs.readdirSync(metaDir);
-    console.log('Metadata files found:', files); // Log metadata files found
     return files.map(file => {
         const filePath = path.join(metaDir, file);
         const metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
