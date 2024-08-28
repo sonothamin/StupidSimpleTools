@@ -8,8 +8,8 @@
     ],
     "routes": [
       {
-        "src": "/tools/(.*)",
-        "dest": "/index.js"
+        "src": "/tools/colorpicker",
+        "dest": "/tools/colorpicker.js"
       },
       {
         "src": "/public/(.*)",
