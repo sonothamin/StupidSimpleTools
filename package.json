@@ -1,0 +1,15 @@
+{
+  "name": "stupidsimpletools",
+  "version": "0.1.0",
+  "description": "Suit of useful simple tools, from calculators to text manupulators.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "stupidsimpletools"
+  },
+  "author": "Sonoth Amin",
+  "license": "MIT"
+}
