@@ -10,7 +10,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Function to get metadata from tools
 function getToolMetadata(filePath) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
-    const metaRegex = /\/\*\s*meta:\s*({[\s\S]*?})\s*\*\//;
+    const metaRegex = /\/\*\s*meta\s*:\s*({[^]*?})\s*\*\//;
     const match = fileContent.match(metaRegex);
     if (match) {
         return JSON.parse(match[1]);
