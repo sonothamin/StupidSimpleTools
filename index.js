@@ -23,24 +23,25 @@ function getToolMetadata(filePath) {
 // Function to get the list of tools
 function getToolsList() {
     const toolsDir = path.join(__dirname, 'tools');
+    console.log('Reading tools directory:', toolsDir); // Log the directory being read
     const files = fs.readdirSync(toolsDir);
+    console.log('Files found in tools directory:', files); // Log the files found
     return files.map(file => {
         const filePath = path.join(toolsDir, file);
+        console.log('Processing file:', filePath); // Log each file being processed
         const metadata = getToolMetadata(filePath);
         if (metadata) {
+            console.log('Metadata for', file, ':', metadata); // Log metadata
             return {
                 name: path.basename(file, '.js'),
                 ...metadata
             };
+        } else {
+            console.log('No metadata found for', file); // Log if no metadata is found
         }
         return null;
     }).filter(tool => tool !== null);
 }
-
-app.get('/', (req, res) => {
-    const tools = getToolsList();
-    res.render('index', { tools });
-});
 
 // Start the server
 app.listen(3000, () => {
