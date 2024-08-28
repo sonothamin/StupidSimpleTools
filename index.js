@@ -13,10 +13,12 @@ function getToolMetadata(filePath) {
     const metaRegex = /\/\*\s*meta\s*:\s*({[^]*?})\s*\*\//;
     const match = fileContent.match(metaRegex);
     if (match) {
+        console.log('Extracted metadata:', match[1]); // Log metadata
         return JSON.parse(match[1]);
     }
     return null;
 }
+
 
 // Function to get the list of tools
 function getToolsList() {
