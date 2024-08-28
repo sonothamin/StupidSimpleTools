@@ -4,14 +4,11 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve metadata from /public/meta
-app.use('/public/meta', express.static(path.join(__dirname, 'public', 'meta')));
-
-// Serve tool scripts dynamically
+// Serve tool scripts dynamically from /tools directory
 app.get('/tools/:toolName', (req, res) => {
     const toolName = req.params.toolName;
-    const toolPath = path.join(__dirname, 'public', 'tools', `${toolName}.js`);
-    
+    const toolPath = path.join(__dirname, 'tools', `${toolName}.js`);
+
     fs.access(toolPath, fs.constants.F_OK, (err) => {
         if (err) {
             return res.status(404).send('Tool not found');
