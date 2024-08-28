@@ -1,14 +1,23 @@
 {
     "version": 2,
     "builds": [
-        { "src": "index.js", "use": "@vercel/node" }
+        {
+            "src": "index.js",
+            "use": "@vercel/node"
+        }
     ],
     "routes": [
-        // Route /tools/* requests to index.js
-        { "src": "/tools/(.*)", "dest": "/index.js" },
-        // Serve static files from the public directory
-        { "src": "/public/(.*)", "dest": "/public/$1" },
-        // Fallback route to index.js
-        { "src": "/(.*)", "dest": "/index.js" }
+        {
+            "src": "/tools/(.*)",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/public/(.*)",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.js"
+        }
     ]
 }
