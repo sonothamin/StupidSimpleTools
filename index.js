@@ -12,8 +12,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/tools/:toolName', (req, res) => {
     const toolName = req.params.toolName;
     const toolPath = path.join(__dirname, 'tools', `${toolName}.js`);
-    
+
     console.log(`Request for tool: ${toolName}`);
+    console.log(`Tool path resolved to: ${toolPath}`);
 
     fs.access(toolPath, fs.constants.F_OK, (err) => {
         if (err) {
