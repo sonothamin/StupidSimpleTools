@@ -13,6 +13,7 @@ app.get('/tools/:toolName', (req, res) => {
         if (err) {
             return res.status(404).send('Tool not found');
         }
+        res.setHeader('Content-Type', 'application/javascript');
         res.sendFile(toolPath);
     });
 });
