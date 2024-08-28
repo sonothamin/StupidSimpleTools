@@ -11,5 +11,8 @@
     "url": "stupidsimpletools"
   },
   "author": "Sonoth Amin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vercel": "^37.2.1"
+  }
 }
