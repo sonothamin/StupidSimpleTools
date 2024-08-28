@@ -1,34 +1,30 @@
-const fs = require('fs');
-const path = require('path');
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 const app = express();
 
-const toolsDir = path.join(__dirname, 'tools');
-
+// Set up EJS as the view engine
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 
-// Function to extract metadata from a tool's JS file
+// Function to get metadata from tools
 function getToolMetadata(filePath) {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const metadataMatch = fileContent.match(/\/\*\s*meta\s*\{(.*?)\}\s*\*\//s);
-
-    if (metadataMatch && metadataMatch[1]) {
-        try {
-            return JSON.parse(metadataMatch[1]);
-        } catch (error) {
-            console.error(`Error parsing metadata for ${filePath}:`, error);
-        }
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const metaRegex = /\/\*\s*meta:\s*({[\s\S]*?})\s*\*\//;
+    const match = fileContent.match(metaRegex);
+    if (match) {
+        return JSON.parse(match[1]);
     }
-
     return null;
 }
 
-// Scanning the tools directory and gathering metadata
+// Function to get the list of tools
 function getToolsList() {
+    const toolsDir = path.join(__dirname, 'tools');
     const files = fs.readdirSync(toolsDir);
-    const tools = files.map(file => {
-        const metadata = getToolMetadata(path.join(toolsDir, file));
+    return files.map(file => {
+        const filePath = path.join(toolsDir, file);
+        const metadata = getToolMetadata(filePath);
         if (metadata) {
             return {
                 name: path.basename(file, '.js'),
@@ -37,8 +33,6 @@ function getToolsList() {
         }
         return null;
     }).filter(tool => tool !== null);
-
-    return tools;
 }
 
 app.get('/', (req, res) => {
@@ -46,7 +40,7 @@ app.get('/', (req, res) => {
     res.render('index', { tools });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Start the server
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });
